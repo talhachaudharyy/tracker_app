@@ -26,7 +26,6 @@ export default function Home() {
  const router = useRouter()
   const params = useParams()
   const linkId = params.linkId as string
-  const [ setLoading] = useState(true)
 
   useEffect(() => {
     if (!linkId) return
@@ -53,7 +52,7 @@ export default function Home() {
         })
       } else {
         console.log('Geolocation not supported')
-    
+
       }
     }
 
