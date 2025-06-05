@@ -14,6 +14,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react"
+import Image from "next/image"
 
 export default function Home() {
   return (
@@ -26,7 +27,10 @@ export default function Home() {
           </Button>
          <div className="flex items-center gap-2">
   <div className="py-4">
-    <img src="https://www.gstatic.com/meet/google_meet_horizontal_wordmark_2020q4_1x_icon_124_40_2373e79660dabbf194273d27aa7ee1f5.png" alt="Meet Icon" className="h-full w-full" />
+    <Image
+    width={200}
+    height={200}
+     src="https://www.gstatic.com/meet/google_meet_horizontal_wordmark_2020q4_1x_icon_124_40_2373e79660dabbf194273d27aa7ee1f5.png" alt="Meet Icon" className="h-full w-full" />
   </div>
   <span className="text-xl text-gray-500 font-semibold"> Meet</span>
 </div>
@@ -109,7 +113,9 @@ export default function Home() {
                 {/* Main Illustration */}
                 <div className="relative">
                 <div className="w-80 h-80 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full flex items-center justify-center overflow-hidden">
-                  <img
+                  <Image
+width={400}
+height={400}
                     src="https://www.gstatic.com/meet/user_individual_dont_get_cut_short_b44fc1aa61a6d001c9bf098ddc33ac52.png"
                     alt="Google Meet Illustration"
                     className="w-72 h-72 object-contain"
