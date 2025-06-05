@@ -8,7 +8,7 @@ export const createLink = async (req, res) => {
   const randomId = nanoid(60);
   const newLink = new Link({ linkId: randomId });
   await newLink.save();
-  res.json({ trackingLink: `http://localhost:5000/api/track/${randomId}` });
+  res.json({ trackingLink: `https://tracker-app-eung.onrender.com/${randomId}` });
 };
 
 // Serve tracking page with geolocation request
