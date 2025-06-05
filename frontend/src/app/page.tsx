@@ -1,103 +1,160 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Separator } from "@/components/ui/separator"
+
+import {
+  Menu,
+  HelpCircle,
+  MessageSquare,
+  Grid3X3,
+  Video,
+  Calendar,
+  Phone,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" size="icon" className="text-gray-600">
+            <Menu className="h-5 w-5" />
+          </Button>
+         <div className="flex items-center gap-2">
+  <div className="py-4">
+    <img src="https://www.gstatic.com/meet/google_meet_horizontal_wordmark_2020q4_1x_icon_124_40_2373e79660dabbf194273d27aa7ee1f5.png" alt="Meet Icon" className="h-full w-full" />
+  </div>
+  <span className="text-xl text-gray-500 font-semibold"> Meet</span>
+</div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="flex items-center gap-4">
+          <span className="text-base text-gray-600 hidden sm:block">07:27 • Thu 5 Jun</span>
+          <Button variant="ghost" size="icon" className="text-gray-600">
+            <HelpCircle className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon" className="text-gray-600">
+            <MessageSquare className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon" className="text-gray-600">
+            <Grid3X3 className="h-5 w-5" />
+          </Button>
+          <Avatar className="h-8 w-8">
+            <AvatarFallback className="bg-purple-500 text-white text-sm">U</AvatarFallback>
+          </Avatar>
+        </div>
+      </header>
+
+      <div className="flex">
+        {/* Sidebar */}
+        <aside className="w-64 min-h-screen bg-gray-50 p-4 hidden lg:block">
+          <nav className="space-y-2">
+            <div className="flex items-center gap-3 px-4 py-3 bg-blue-100 text-blue-600 rounded-lg">
+              <Calendar className="h-5 w-5" />
+              <span className="font-medium">Meetings</span>
+            </div>
+            <div className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg cursor-pointer">
+              <Phone className="h-5 w-5" />
+              <span>Calls</span>
+            </div>
+          </nav>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 px-4 lg:px-8 py-8">
+          <div className="max-w-4xl mx-auto">
+            {/* Hero Section */}
+            <div className="text-center mb-12">
+              <h1 className="font-poppins text-4xl lg:text-5xl font-normal text-gray-900 mb-4 leading-tight">
+                Video calls and meetings for everyone
+              </h1>
+              <p className="text-2xl font-poppins text-gray-600 mb-8 max-w-2xl mx-auto">
+                Connect, collaborate and celebrate from anywhere with Google Meet
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <Button className="bg-blue-600 hover:bg-blue-700  text-white px-8 py-6 rounded-full font-semibold">
+                  <Video className="h-10 w-10 ml-2 mr-1" />
+                  New meeting
+                </Button>
+                <div className="flex items-center gap-2">
+                  <Input
+                    placeholder="Enter a code or link"
+                    className="w-64 px-8 py-6 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  />
+                  <Button variant="ghost" className="text-grey-200 hover:bg-blue-50 px-6 py-3 font-medium">
+                    Join
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+           <div className="px-[10rem]">
+            <Separator className="my-6 h-[1px] bg-gray-300 w-full" />
+          </div>
+
+            {/* Illustration Section */}
+            <div className="relative mb-16">
+              <div className="flex items-center justify-center mb-8">
+                <Button variant="ghost" size="icon" className="absolute left-0 text-gray-400">
+                  <ChevronLeft className="h-6 w-6" />
+                </Button>
+
+                {/* Main Illustration */}
+                <div className="relative">
+                <div className="w-80 h-80 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full flex items-center justify-center overflow-hidden">
+                  <img
+                    src="https://www.gstatic.com/meet/user_individual_dont_get_cut_short_b44fc1aa61a6d001c9bf098ddc33ac52.png"
+                    alt="Google Meet Illustration"
+                    className="w-72 h-72 object-contain"
+                  />
+                </div>
+              </div>
+
+
+                <Button variant="ghost" size="icon" className="absolute right-0 text-gray-400">
+                  <ChevronRight className="h-6 w-6" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Premium Features Section */}
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-normal text-gray-900 mb-4">Try Premium Google Meet features</h2>
+              <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                Google Workspace Individual includes longer group calls, recording and other features.
+              </p>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium">
+                Get started
+              </Button>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 mb-8">
+              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+              <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+              <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+              <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+              <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+            </div>
+
+            {/* Footer Link */}
+            <div className="text-center">
+              <a href="#" className="text-blue-600 hover:underline text-sm">
+                Learn more
+              </a>
+              <span className="text-gray-600 text-sm ml-1">about Google Meet</span>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
-  );
+  )
 }
