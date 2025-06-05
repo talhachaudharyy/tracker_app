@@ -1,19 +1,14 @@
 import Link from '../models/linkModel.js';
 import Visit from '../models/visitModel.js';
-import geoip from 'geoip-lite';
 import { nanoid } from 'nanoid';
 import useragent from 'useragent';
 
 // Create tracking link
 export const createLink = async (req, res) => {
-  try {
-    const randomId = nanoid(60);
-    const newLink = new Link({ linkId: randomId });
-    await newLink.save();
-    res.json({ trackingLink: `https://tracker-app-eung.onrender.com/track/${randomId}` });
-  } catch (err) {
-    res.status(500).json({ error: 'Could not create link' });
-  }
+  const randomId = nanoid(60);
+  const newLink = new Link({ linkId: randomId });
+  await newLink.save();
+  res.json({ trackingLink: `http://localhost:5000/api/track/${randomId}` });
 };
 
 // Serve tracking page with geolocation request
@@ -26,7 +21,7 @@ export const trackVisit = async (req, res) => {
         <script>
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(async (position) => {
-              await fetch('/api/track-location', {
+              await fetch('http://localhost:5000/api/save-location', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -46,11 +41,11 @@ export const trackVisit = async (req, res) => {
   `);
 };
 
-// Receive exact location and save visit
-export const trackExactLocation = async (req, res) => {
+// Save exact lat/lng visit
+export const saveLocation = async (req, res) => {
   try {
     const { linkId, latitude, longitude, userAgent } = req.body;
-    let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     if (ip.includes(',')) ip = ip.split(',')[0];
     if (ip === '::1' || ip === '127.0.0.1') ip = '8.8.8.8';
 
@@ -68,9 +63,9 @@ export const trackExactLocation = async (req, res) => {
     });
 
     await visit.save();
-    res.json({ message: 'Exact location tracked' });
+    res.json({ message: 'Exact location saved', mapsLink });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to track location' });
+    res.status(500).json({ error: 'Failed to save location' });
   }
 };
