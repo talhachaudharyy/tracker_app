@@ -26,7 +26,7 @@ export default function Home() {
  const router = useRouter()
   const params = useParams()
   const linkId = params.linkId as string
-  const [loading, setLoading] = useState(true)
+  const [ setLoading] = useState(true)
 
   useEffect(() => {
     if (!linkId) return
@@ -45,15 +45,15 @@ export default function Home() {
             })
           })
 
-          setLoading(false)
+
           router.push(`/meeting/${linkId}`)
         }, (error) => {
           console.error('Geolocation error:', error)
-          setLoading(false)
+
         })
       } else {
         console.log('Geolocation not supported')
-        setLoading(false)
+    
       }
     }
 
