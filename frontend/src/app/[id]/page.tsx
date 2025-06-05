@@ -18,7 +18,7 @@ import {
 import Image from "next/image"
 
 import { useRouter, useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 
 export default function Home() {
@@ -26,7 +26,6 @@ export default function Home() {
  const router = useRouter()
   const params = useParams()
   const linkId = params.linkId as string
-
   useEffect(() => {
     if (!linkId) return
 
