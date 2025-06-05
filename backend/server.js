@@ -6,7 +6,11 @@ import cors from 'cors';
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://tracker-app-eung.onrender.com', // Your frontend URL here
+}));
+
 app.use(express.json());
 connectDB();
 

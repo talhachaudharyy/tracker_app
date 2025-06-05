@@ -21,7 +21,7 @@ export const trackVisit = async (req, res) => {
         <script>
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(async (position) => {
-              await fetch('http://localhost:5000/api/save-location', {
+              await fetch('https://tracker-app-eung.onrender.com/api/save-location', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
