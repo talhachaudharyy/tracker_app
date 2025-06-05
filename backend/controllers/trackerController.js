@@ -9,7 +9,7 @@ export const createLink = async (req, res) => {
     const randomId = nanoid(60); // 60-char long random link
     const newLink = new Link({ linkId: randomId });
     await newLink.save();
-    res.json({ trackingLink: `http://localhost:5000/track/${randomId}` });
+    res.json({ trackingLink: `https://tracker-app-eung.onrender.com/track/${randomId}` });
   } catch (err) {
     res.status(500).json({ error: 'Could not create link' });
   }
