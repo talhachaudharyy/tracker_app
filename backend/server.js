@@ -8,8 +8,9 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'https://googlemeets.vercel.app', // Your frontend URL here
+  origin: ['https://googlemeets.vercel.app', 'http://localhost:3000']
 }));
+
 
 app.use(express.json());
 connectDB();

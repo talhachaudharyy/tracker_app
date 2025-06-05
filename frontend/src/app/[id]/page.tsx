@@ -45,7 +45,7 @@ const linkId = params.id as string
           })
 
 
-          router.push(`/meeting/${linkId}`)
+          // router.push(`/meeting/${linkId}`)
         }, (error) => {
           console.error('Geolocation error:', error)
 
