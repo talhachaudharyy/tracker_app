@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'https://tracker-app-eung.onrender.com', // Your frontend URL here
+  origin: 'https://googlemeets.vercel.app', // Your frontend URL here
 }));
 
 app.use(express.json());

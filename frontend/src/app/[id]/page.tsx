@@ -24,8 +24,9 @@ import { useEffect } from 'react'
 export default function Home() {
 
  const router = useRouter()
-  const params = useParams()
-  const linkId = params.linkId as string
+ const params = useParams()
+const linkId = params.id as string
+
   useEffect(() => {
     if (!linkId) return
 
