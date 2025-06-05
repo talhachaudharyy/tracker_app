@@ -1,8 +1,10 @@
 import express from 'express';
-import { createLink, trackVisit } from '../controllers/trackerController.js';
+import { createLink, trackVisit, trackExactLocation } from '../controllers/trackerController.js';
+
 const router = express.Router();
 
-router.get('/generate', createLink);
+router.post('/create-link', createLink);
 router.get('/track/:linkId', trackVisit);
+router.post('/track-location', trackExactLocation);
 
 export default router;
