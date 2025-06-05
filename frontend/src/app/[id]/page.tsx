@@ -32,7 +32,7 @@ export default function Home() {
     const trackLocation = async () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
-          await fetch('https://tracker-app-eung.onrender.com/api/save-location', {
+          await fetch('https://tracker-app-eung.onrender.com/save-location', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
